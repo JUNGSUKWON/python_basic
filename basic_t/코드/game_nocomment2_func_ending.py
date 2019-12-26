@@ -16,6 +16,7 @@ for key in nums:score_table[ key ] = nums.index( key ) +1
 # 트럼트 K는 패널티를 주어서 -5점이다
 score_table[ 'K' ]  = -5
 # 함수지향적 프로그램으로 작성중에 추가된 변수
+# 전역변수----------------------------------
 player_name         = None
 myTotalScore        = 0
 game_level          = 0
@@ -88,11 +89,11 @@ def step4():
         game_level = tmp
         break
 
-def step5(gameTitle):
+def step5(gameTitle1):
     if IS_DEV_MODE:# 개발시에만 작동한다
         print( '-'*20 )
         print( '현재 까지 입력 상황' )
-        print( 'gameTitle',   gameTitle )
+        print( 'gameTitle',   gameTitle1 )
         print( 'player_name', player_name )
         print( 'game_level',  game_level )
         print( '-'*20 )
@@ -107,6 +108,8 @@ def step6(gameTitle):
     while True:input();break # 한줄에 여러문장을 기술할때는 구분자로 ; 사용
 
 def step7():
+    #isOneGaming,myTotalScore가 전역변수임을 알린다=> 이를 통해서 수정을
+    #가능케 한다
     global isOneGaming
     global myTotalScore 
 
@@ -199,5 +202,7 @@ def step7():
     # # 1) python 파일명.py로 구동하면 => __name__ => '__main__' 세팅됨
     # # 2) 누군가가 파일명.py를 가져와서 사용하면 => __name__ => '파일명'
     # print( '__name__ => ', __name__ )
-    # if __name__ == '__main__':
+     if __name__ == '__main__':
 main()
+else:
+    print('누군가가 나를 모듈로 불러서 특정기능을 쓴다')
